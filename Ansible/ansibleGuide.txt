@@ -1,3 +1,21 @@
+
+							Ansible Learning
+							================
+
+
+Ansible -- Developed using Python , market Release in 2012
+
+Ansible Competitors are : Puppet .pp, Chef .rf and Salt . 
+
+Ansible is agent less architecture other are required agen on the nodes. 
+		agent insatalled in the Nodes. 
+Ansible just requires python and SSH Connnection.
+
+For Document : 
+
+https://docs.ansible.com/ 
+
+
 Installation Steps for Ubuntu
 ====================================================================
 sudo apt-get update
