@@ -1,0 +1,65 @@
+Installation Steps for Ubuntu
+====================================================================
+sudo apt-get update
+sudo apt-get install software-properties-common
+sudo apt-add-repository --yes --update ppa:ansible/ansible
+sudo apt-get install ansible
+
+Three Node Ansible Setup: 
+1 Controller and 2 Nodes setup
+Install the above commands to setup the ansilble on all the three nodes. 
+
+install Setup.sh on both the Salve Nodes.
+
+Default Invetory file location : /etc/ansible/hosts and can be override with -i option. 
+ 				Creat Inventory file on the Controller.
+
+ubuntu@ip-172-31-31-155:~$ ansible --version
+ansible 2.9.22
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = [u'/home/ubuntu/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/dist-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 2.7.17 (default, Feb 27 2021, 15:10:58) [GCC 7.5.0]
+ubuntu@ip-172-31-31-155:~$ 
+
+<Snip>
+=====
+
+ubuntu@ip-172-31-31-155:/usr/bin$ ansible DEV  -m shell -a "free -h "    -u devops --ask-pass
+SSH password: 
+[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host 54.191.187.112 should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility
+ with prior Ansible releases. A future Ansible release will default to using the discovered platform python for this host. See 
+https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information. This feature will be removed in version 2.12. 
+Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+54.191.187.112 | CHANGED | rc=0 >>
+              total        used        free      shared  buff/cache   available
+Mem:           978M        156M        125M        780K        696M        670M
+Swap:            0B          0B          0B
+ubuntu@ip-172-31-31-155:/usr/bin$ 
+
+
+[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host 54.191.187.112 should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility
+ with prior Ansible releases. A future Ansible release will default to using the discovered platform python for this host. See 
+https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information. This feature will be removed in version 2.12. 
+Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++==
+
+Inventory File Specification
+==============================
+https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html
+
+
+Import command imperative method  to get setup of the nodes from Master:
+
+ubuntu@ip-172-31-31-155:/etc/ansible$ ansible QA  -m setup    -u devops --ask-pass 
+
+				SSH Keygen Paswordless and enctypted data transfer 
+
+				=================================================
+    # sudo su - <username>/devops here
+    3  ssh-keygen
+    4  ssh-copy-id devops@172.31.24.84
+A
+A
+    

@@ -1,0 +1,494 @@
+
+Google App Engine First released by Google in 2008
+AWS released in 2006.
+Datastore in GCP?
+OPen Source Cloud Platform Open Stack by Nasa in 2008
+Azure in 2014 Renamed to Microsof Azure
+IBM's Blue mix cloude computing services.
+
+        Cloud Computing services
+            IAAS
+            PAAS
+            SAAS
+
+IAAS Example
+Some of the examples of services provided under IAAS by Google Cloud are IPs, Firewalls, Storage, Virtual Private Cloud, Compute Engine.
+
+PAAS Example 
+Examples of PAAS in Google Cloud are Google App Engine, which is their first service, BigQuery, Cloud SQL, Cloud PubSub, etc.
+
+SAAS:
+
+ Google Apps like Gmail, Maps, Calendar, and many more are hosted on Google Cloud, which are examples of SAAS. Google Cloud Platform is a backbone for any software as a service product you want to develop
+
+cloud computing is an environment that needs various types of virtualization.
+
+
+        Virtualization (Logical Separation of Process)
+            Server Virtualization
+            Storage Virtualization
+            Network Virtualization
+
+
+Storage services are scalable, and in IAAS services, they are scaled according to the requirements without any extra service tickets to cloud providers.
+
+After carrying out all the virtualization tasks, cloud providers also provide different cabilities that are not possible or are time-consuming on local infrastructure.
+
+Google Cloud Facts and  Special charectrisitics:
+Secure Global Private Network.
+Only Cloud Provicers with all the network data goes only through their Private network .. No public network involved. 
+ 
+**  TensorFlow is one of these technologies. TensorFlow was Google’s AI engine and was at the core of their Google Search. Now, it is open-sourced and anyone can use it for Machine Learning purposes.	
+
+** VM Live Migration only provided by google as of today's date. In other cloud providers VMs has to stop for the migration. 
+
+** Creators of Kuberenetes Engine and OPen Sourced now.. Millions of Containers running for Google Services using Google's Kubernetes Serivice.
+
+** AI and Machine Learning Services
+	Kubeflow is trending for ML ops now. Again, KubeFlow was based on Google’s internal method to deploy TensorFlow models to Kubernetes, called TensorFlow Extended.
+
+
+Organized Structure Spl Info:
+Google Cloud also offers lifetime-free resources. Check out cloud.google.com/free.
+Proven Google apps and services like maps that are hosted on Google Cloud.
+Google Cloud data centers run on half the energy of a typical data center and run on 100% renewable energy when available.
+====================================================
+Qwiklabs by Google #
+
+Meanwhile, you can explore the Google Cloud Platform using Qwiklabs.
+
+Qwiklab provides real cloud environments to help developers and IT professionals learn cloud platforms and software. These are temporary environments, and nothing is retained once the lab is completed.
+
+    Head onto this Qwiklab quest.
+
+
+Good Information about Free Tier and Google Products in the link 
+		cloud.google.com/free
+
+
+Resource and Structure of Google Account"
+
+        Resource hierarchy
+            Organization
+            Folders
+            Projects
+            Services /Resources
+        Inheritance
+
+
+
+Organization:
+================
+If you are not using G-Suite, Cloud Identity and Cloud Directory Sync services help you to use the other Active Directory services to manage your Google Cloud account.
+
+o
+These services help keep users in the active directory in sync with Google Cloud.
+
+All GCP services except IAM and Billing should belong to any of the GCP Project.
+
+IAM and Billing are organizational level services.
+
+IAM -- Identity and Access Management -- Who can access what on Which Resources.
+
+End Lever Resources/ Serivices :examples: VM instance, Storage Bucket.
+
+ 			Inheritence:
+			===========
+
+
+Grant the storage Object Admin role to your data processing expert Alice at alice@example.com, for example. Alice has object admin rights at the project level and can read, add, and delete any object in any bucket in the project.
+
+Grant the Storage Object Creator to a group of users, data_uploaders@example.com. This policy means that anyone who is a member of data_uploaders@example.com can upload files to the bucket. A group member owns the files that they upload, but they can’t read or delete any files that other users upload. The following diagram illustrates this
+
+Project has Three Attributes:
+============================
+Project Name , Project ID, Project Number
+
+Project ID is unique ID.
+
+Project Number is also unique but assigned by GCP.
+
+gcloud Basics: 
+
+# gcloud projects list
+# gcloud organizations list
+# gcloud project create [prject _id]
+
+########################################################
+
+IAM -- 
+       Identity and Access Management
+
+GCP Service and Resource Example : Service is Compute and Resource is instance 
+
+Permission & Roles:
+		Permisssoin are building blocks of IAM 
+Set of Permissions are assigned for Roles
+ 
+
+Permissionas are template type and created by Google and not modifi
+
+We can create a role but not permissions.
+IAM has three type os Roles
+
+Primitive Roles
+Predefined Roles
+Custom Roles 
+
+Primitve Roles:
+		Like Super User having lot of permissions
+
+Caution: Basic roles include thousands of permissions across all Google Cloud services. In production environments, do not grant basic roles unless there is no alternative. Instead, grant the most limited predefined roles or custom roles that meet your needs.
+
+Predefined roles #
+
+Google Cloud has already created the most frequently used organization roles. These are specific to resources. Consider Compute Admin. This role is defined as compute.instanceAdmin and has multiple permissions bundled inside it.
+
+Customer Roles#
+		One thing to note is that custom roles cannot be applied at the folder level.
+
+Custom roles are a great way to provide permission to a newly created or unconventional role in an organization. However, these roles need to be managed by the organization or anyone who has this responsibility.
+
+Keep in mind that GCP does not manage custom roles, and you need to take care of those.
+
+The format of a permission is service.resource.verb. For example, the compute.instances.stop permission will manage stopping a VM.
+
+Other IAM Components :
+======================
+				IAM Members and POlicy
+
+IAM Members:
+		“A member can be a Google Account (for end-users), a service account (for apps and virtual machines), a Google group, or a Google Workspace or Cloud Identity domain that can access a resource. The identity of a member is an email address associated with a user, service account, or Google group; or a domain name associated with Google Workspace or Cloud Identity domains”
+
+
+Members of IAM can be:
+
+    Google Account: Anyone with Gmail ID can be given access to the project or specific resources.
+
+    Service Account: This is internal to GCP. A service account acts as an identity for the services. For example, if we want to restrict a particular virtual machine from accessing any resources, we can remove all the roles and permissions associated with the virtual machine’s service account.
+
+    Google Groups: Often, you might want to assign the same permissions to a set of users or a team. Google groups help to satisfy this requirement. When the permissions are assigned to a Google group email ID, we can add and remove users to that group who need those permissions.
+
+    Cloud Identity Domain: These are email IDs with organization domains, like abc@educative.io. If an organization is not using Google Workspaces, this organization’s user emails are given access to GCP using the Cloud Identity service.
+
+    Google Workspaces Domain: If an organization is using G-Suite to manage their organization’s email and other company-wide services, these user IDs are Google Workspaces IDs. These are automatically synced with the organization’s GCP account.
+
+Apart from these, there are two predefined keywords that represent a certain type of member.
+
+    allAuthenticatedUsers: The value allAuthenticatedUsers is a special identifier that represents all service accounts and all users on the internet who have authenticated with a Google account. This identifier includes accounts that aren’t connected to a Google Workspace or Cloud Identity domain, such as personal Gmail accounts. Users who aren’t authenticated, such as anonymous visitors, aren’t included.
+
+    allUsers: The value allUsers is a special identifier that represents anyone who is on the internet, including authenticated and unauthenticated users.
+
+So, now that you know how many types of users are in GCP, let’s look at “how” to control these members’ access to services using IAM.
+
+
+IAM policy #
+
+IAM policy is created whenever a role or permission is granted to a user. An IAM policy is represented by the IAM policy object. An IAM policy object consists of a list of bindings. A binding binds a list of members to a role.
+
+Policy Trouble Shotter in GCP  : 
+
+
+IAM Hands-On
+================
+		In this lesson, we will explore Cloud IAM using GUI and cloud shell. (Google Cloud Ephemeral Shell Environment.) This demo requires more than one user in your GCP project, so we will create a second user in our current project.
+
+Storage Bucket created for Testing: my_st_new_file in Project GCP-Learning
+
+Service Account created with Storage object Bucket View Permission and verfied it on the Google Cloud shell . 
+Cloud shell Initializtion with the User:
+=======================================
+    gcloud auth activate-service-account --key-file=[path/to/keyfile.json
+    gcloud config set account [email]
+	gcloud ml-engine jobs list
+
+		gcloud auth activate-service-account --key-file=
+		gcloud auth activate-service-account --key-file=gcp-learning-316611-470728fa1cc3.json
+Bucket List from Cloud Shell:
+============================
+gsutil ls gs://[bucketname]
+
+ ****Enabling APIs 
+===================
+
+In GCP, every service is available as an API. Some APIs are enabled by default when we create a project. For the rest of the services, we need to first enable the API to use them.
+
+API explorer to tyo try before enabling the APIs .
+
+Read About Google Groups: ... ?
+
+
+					Billing Accounts
+Creating a new account for each procjec is good idea to maintain and track the billing. 
+BigQuery methond is advisible for the new trend of tracking the billing in GCP.
+
+
+                 			ClOUD CLI  CLOUD SDK  GCLOUD 
+					===========================
+
+Cloud SDK Components:
+
+			All of the installation methods above install the default Cloud SDK components, which include gcloud, gsutil and bq command-line tools.
+
+
+https://cloud.google.com/sdk/docs/install
+
+CLOUD SDK can be installed by using normal install method or using docker images.
+
+
+                Try Gloud installation using Docker ?????  Source from educative.io CLoud SDK Lesson 
+
+
+Gcloud SDK Components:
+
+Some of the important components in Cloud SDK are:
+
+    gcloud: The main google cloud component.
+        gcloud alpha: Set of commands used for early testing of new features.
+        gcloud beta: Beta release of new commands.
+
+    bq: Known as BigQuery component
+
+    gsutil: Used for Cloud storage operations.
+
+    core: Shared libraries for all the other components.
+
+    kubectl: Kubectl is used to control the Kubernetes cluster.
+
+
+
+
+To install or remove components at your current SDK version [317.0.0], run:
+  $ gcloud components install COMPONENT_ID
+  $ gcloud components remove COMPONENT_ID
+
+To update your SDK installation to the latest version [317.0.0], run:
+  $ gcloud components update
+
+sv_csrv@cloudshell:~$ gcloud components list
+
+Your current Cloud SDK version is: 344.0.0
+The latest available version is: 344.0.0
+
+┌────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                                 Components                                                 │
+├───────────────┬──────────────────────────────────────────────────────┬──────────────────────────┬──────────┤
+│     Status    │                         Name                         │            ID            │   Size   │
+├───────────────┼──────────────────────────────────────────────────────┼──────────────────────────┼──────────┤
+│ Deprecated    │ Kind                                                 │ kind                     │          │
+│ Not Installed │ Appctl                                               │ appctl                   │ 21.0 MiB │
+│ Not Installed │ Cloud Firestore Emulator                             │ cloud-firestore-emulator │ 40.5 MiB │
+│ Not Installed │ Cloud SQL Proxy                                      │ cloud_sql_proxy          │  7.6 MiB │
+│ Not Installed │ Cloud Spanner Emulator                               │ cloud-spanner-emulator   │ 21.8 MiB │
+│ Not Installed │ Emulator Reverse Proxy                               │ emulator-reverse-proxy   │ 14.5 MiB │
+│ Not Installed │ Google Container Registry's Docker credential helper │ docker-credential-gcr    │  1.8 MiB │
+│ Not Installed │ Kustomize                                            │ kustomize                │ 25.9 MiB │
+│ Not Installed │ Nomos CLI                                            │ nomos                    │ 22.9 MiB │
+│ Not Installed │ anthos-auth                                          │ anthos-auth              │ 16.8 MiB │
+│ Not Installed │ config-connector                                     │ config-connector         │ 45.3 MiB │
+│ Not Installed │ kubectl                                              │ kubectl                  │  < 1 MiB │
+│ Not Installed │ kubectl-oidc                                         │ kubectl-oidc             │ 16.8 MiB │
+│ Not Installed │ pkg                                                  │ pkg                      │          │
+│ Installed     │ App Engine Go Extensions                             │ app-engine-go            │  4.9 MiB │
+│ Installed     │ BigQuery Command Line Tool                           │ bq                       │  < 1 MiB │
+│ Installed     │ Cloud Bigtable Command Line Tool                     │ cbt                      │  7.7 MiB │
+│ Installed     │ Cloud Bigtable Emulator                              │ bigtable                 │  6.6 MiB │
+│ Installed     │ Cloud Datalab Command Line Tool                      │ datalab                  │  < 1 MiB │
+│ Installed     │ Cloud Datastore Emulator                             │ cloud-datastore-emulator │ 18.4 MiB │
+│ Installed     │ Cloud Pub/Sub Emulator                               │ pubsub-emulator          │ 60.4 MiB │
+│ Installed     │ Cloud SDK Core Libraries                             │ core                     │ 18.9 MiB │
+│ Installed     │ Cloud Storage Command Line Tool                      │ gsutil                   │  3.9 MiB │
+│ Installed     │ Google Cloud Build Local Builder                     │ cloud-build-local        │  6.3 MiB │
+│ Installed     │ Minikube                                             │ minikube                 │ 50.4 MiB │
+│ Installed     │ On-Demand Scanning API extraction helper             │ local-extract            │ 13.6 MiB │
+│ Installed     │ Skaffold                                             │ skaffold                 │ 16.9 MiB │
+│ Installed     │ gcloud Alpha Commands                                │ alpha                    │  < 1 MiB │
+│ Installed     │ gcloud Beta Commands                                 │ beta                     │  < 1 MiB │
+│ Installed     │ gcloud app Java Extensions                           │ app-engine-java          │ 52.4 MiB │
+│ Installed     │ gcloud app Python Extensions                         │ app-engine-python        │  7.7 MiB │
+│ Installed     │ gcloud app Python Extensions (Extra Libraries)       │ app-engine-python-extras │ 26.4 MiB │
+│ Installed     │ kpt                                                  │ kpt                      │ 11.7 MiB │
+└───────────────┴──────────────────────────────────────────────────────┴──────────────────────────┴──────────┘
+To install or remove components at your current SDK version [344.0.0], run:
+
+
+
+To install or remove components at your current SDK version [317.0.0], run:
+  $ gcloud components install COMPONENT_ID
+  $ gcloud components remove COMPONENT_ID
+
+To update your SDK installation to the latest version [317.0.0], run:
+  $ gcloud components update
+
+
+
+The structure of the Cloud SDK command is as follows:
+
+<component> [optional flags] <group / command>
+
+For example: gcloud projects list and gcloud version. Here, projects is a group. Groups indicate different google services. And the properties of these services can be configured using commands.
+
+
+
+Try.. 
+
+
+
+et’s try these commands one by one. We will:
+
+    Create a new configuration named “cloud-sdk-demo” and activate it.
+
+    Set the value of project property to “gcp-headstart-educative”.
+
+    List the values of the current configuration.
+
+    List the available configurations.
+
+    Unset the project property.
+
+    Change the configuration to default.
+
+				Comput Service 
+				==============
+
+Comput Options:
+
+        Use of App Engine
+        Use of Cloud functions
+
+        Use of GKE
+        Use of Cloud Run
+
+        Use of Compute Engine
+
+
+
+Compute, Storage and Networking are 3 core pillars of Cloud computing.
+
+Compute Services offered by GCP:
+    Compute Engine
+    Google Kubernetes Engine
+    App Engine
+    Cloud Run
+    Cloud Functions
+    VMware Engine
+
+Above service can be chosen based on Operations managed by us and workload on the compute engine.
+
+Use of App Engine #
+
+App Engine is a fully managed platform. It is used to deploy a web-based application and mobile backends. The reason it is listed as a limited workload is it supports applications that speak only HTTP. Also, it supports specific programming languages only and a custom runtime needs to be created with Docker.
+
+This will be used when:
+
+    You don’t want to do operations and just want to focus fully on development.
+
+    You don’t care about the OS.
+
+    You want high availability of the app across geographic locations.
+
+    Application portability is not your concern.
+
+    Your app communicates over HTTP.
+
+Use of Cloud functions #
+
+Cloud functions are an event-triggered piece of code. The code is executed based on some event. And that’s the reason it useful for some more workloads as compared to App Engine. Hence, located lower side of the workload axis.
+
+This will be used when:
+
+    You want to accomplish something using code after an event is triggered. For example, when an image is uploaded, you want to compress that image and store it on cloud storage.
+
+    You can develop in Javascript, Go, Python3 and JAVA
+
+    You don’t care about OS.
+
+    The functionality is time-bound. This means the code execution should not exceed 540 seconds.
+
+Use of GKE #
+
+Google Kubernetes Engine is a managed Kubernetes service provided by Google. GKE can run different workloads as long as they are containerized. GKE doesn’t require you to manage the low-level configurations like OS. However, you need to define the clusters and their operations.
+
+So, you use GKE when:
+
+    You have containerized workload.
+
+    Your focus is on containers.
+
+    You want portability like you can migrate your app to other cloud providers if needed.
+
+    You think containers as a unit of deployment.
+
+Use of Cloud Run #
+
+Cloud run is the managed GKE service. The use case mostly same as GKE except,
+
+    You are not worried about portability.
+
+    You want Google to manage cluster creation.
+
+    Your workloads are containerized.
+
+    You want to be charged as little as possible. (Free 2 million requests per month in the specific US region)
+
+    You care about high availability of the app
+
+    You don’t care about the underlying OS or networking.
+
+Use of Compute Engine #
+
+The last service the Compute Engine is suitable for all type of workloads, it’s a high performance and provides OS-level access. However, with great power comes great responsibilities.
+
+So, you use Compute Engine when:
+
+    You want control over low-level specifications such as CPU, GPU, RAM, OS, storage, networking etc. Like configuring a computer.
+
+    You want to lift and shift the existing app as it is.
+
+    No containerized workloads.
+
+    Bulk processing and require short-lived compute instances. (Preemptible instances.)
+
+
+GCLOUD Commands:
+sv_csrv@cloudshell:~ (gcp-learning-316611)$ gcloud beta compute  instances create instance-2 --zone=asia-southeast1-b
+Created [https://www.googleapis.com/compute/beta/projects/gcp-learning-316611/zones/asia-southeast1-b/instances/instance-2].
+NAME        ZONE               MACHINE_TYPE   PREEMPTIBLE  INTERNAL_IP  EXTERNAL_IP  STATUS
+instance-2  asia-southeast1-b  n1-standard-1               10.148.0.2   34.87.79.51  RUNNING
+sv_csrv@cloudshell:~ (gcp-learning-316611)$
++++++++++++++++++++
+sv_csrv@cloudshell:~ (gcp-learning-316611)$ gcloud compute instances describe instance-2  | grep "deletionProtection"
+Did you mean zone [asia-southeast1-b] for instance: [instance-2]
+(Y/n)?  y
+
+deletionProtection: false
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+gcloud compute instances describe instance-2 --zone=asia-southeast1-b | grep "deletionProtection"
+sv_csrv@cloudshell:~ (gcp-learning-316611)$ gcloud compute instances describe instance-2 --zone=asia-southeast1-b | grep "deletionProtection"
+deletionProtection: false
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+sv_csrv@cloudshell:~ (gcp-learning-316611)$ gcloud compute instances describe instance-1 --zone=asia-south1-c | grep "deletionProtection"
+deletionProtection: true
+sv_csrv@cloudshell:~ (gcp-learning-316611)$
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Gcloud connecting to instance using ssh : 
+
+gcloud compute ssh --zone asia-south1-c  sv_csrv@instance-1
+OR
+gcloud compute ssh --zone=asia-south1-c  sv_csrv@instance-1
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+					Try Compute Engine Lab
+					=======================
+				https://www.educative.io/courses/google-cloud-assoc-certification/39V2AEBBzNO
+
+gcloud compute ssh --zone asia-south1-c  sv_csrv@instance-1
+
+					Instance Groups
+					===============
+Mainly for Autoscaling with Mangaged Instance Groups ..
+Rolling Update / Rolling replace/restart options with Instance Groups
+Metrics also important .. to autoscale --> check ?  CPU is also one among the metrics
+
+Configuration optioins: Maximum Surge  and Minimum availability.
