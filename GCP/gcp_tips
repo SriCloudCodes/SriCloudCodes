@@ -492,3 +492,55 @@ Rolling Update / Rolling replace/restart options with Instance Groups
 Metrics also important .. to autoscale --> check ?  CPU is also one among the metrics
 
 Configuration optioins: Maximum Surge  and Minimum availability.
+
+#######################################################################################
+					GKE Google Kubernetes Engine
+
+Terms #
+
+Let’s understand the common terms of Kubernetes.
+
+    Pod: Pod is the smallest unit of deployment on Kubernetes. A pod can have multiple containers running inside it. These containers run and scale together and share Pod IP. Basically, the pod is a copy of our application.
+
+    Node: A Node is an actual VM instance. Docker and Kubernetes are preinstalled in these machines. Pods are run inside the machine. Depending upon the configuration a node can have multiple or single pod running at a time in it.
+
+    Services: Services are the endpoint for users. These are interfaces between a pod and the world. As the pod IP can change when a pod is restarted, the Service allows us to map our deployments to a specific endpoint.
+
+    Deployment: A deployment is a definition of the pod. A pod contains container and container is a code. So code can fail and that leads to the pod failure. So, the deployment has the number replicas of a pod in it and it is the responsibility of deployment to maintain the mentioned number of pods in the cluster up and running.
+
+    Daemonset: This type of controller is used to run Node level configurations. Daemonset makes sure that a copy of specific software runs on each node. For example, monitoring agents or New relic.
+
+    Secrets: Secret is the mechanism for storing sensitive data. We can pass on the sensitive data to the container at runtime using an environment variable or by mounting the data in a volume.
+
+    Configmaps: It is similar to secrets except it is used to store non-sensitive configurations of the code. This can also be accessed at runtime by a container.
+
+ GKE -- Management and operations are done by the Google .. 
+         Only we need to use the containers..
+
+There are 3 sections to fill up to create a cluster.
+
+    Cluster basics
+    Node pools
+    Cluster
+		Cluster Basics:
+			1. Rapid
+			2. Regular
+			3. Stable 
+
+#######################################################################################
+
+First Cluster API:
+===================
+
+gcloud beta container --project "gcp-learning-316611" clusters create "your-first-cluster-1" --zone "us-east1-d" --no-enable-basic-auth --cluster-version "1.20.6-gke.1400" --release-channel "rapid" --machine-type "g1-small" --image-type "COS_CONTAINERD" --disk-type "pd-standard" --disk-size "30" --metadata disable-legacy-endpoints=true --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --num-nodes "1" --no-enable-stackdriver-kubernetes --enable-ip-alias --network "projects/gcp-learning-316611/global/networks/default" --subnetwork "projects/gcp-learning-316611/regions/us-east1/subnetworks/default" --no-enable-intra-node-visibility --default-max-pods-per-node "110" --no-enable-master-authorized-networks --addons HorizontalPodAutoscaling,HttpLoadBalancing,GcePersistentDiskCsiDriver --enable-autoupgrade --enable-autorepair --max-surge-upgrade 1 --max-unavailable-upgrade 0 --enable-shielded-nodes --node-locations "us-east1-b","us-east1-d"
+
+Auto pilot and Stard Mode :
+===========================
+https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview?_ga=2.157718899.-831607542.1623992866&_gac=1.261558783.1624009212.Cj0KCQjw5auGBhDEARIsAFyNm9Gw4KeKZ2uIxx4a9lJzFGLicij6d2lnNA0gQCbIubCsWmCQvpzJIioaAt6iEALw_wcB
+
+
+#######################################
+
+config-maps and secret in kuberets configuration .. Please check
+
+#######################################

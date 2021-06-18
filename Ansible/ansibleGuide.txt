@@ -78,6 +78,18 @@ ubuntu@ip-172-31-31-155:/etc/ansible$ ansible QA  -m setup    -u devops --ask-pa
     # sudo su - <username>/devops here
     3  ssh-keygen
     4  ssh-copy-id devops@172.31.24.84
-A
-A
     
+Ad-Hoc ansible command with "limit" option:
+devops@ip-172-31-31-155:~$ history | grep limit
+   44  ansible-playbook facts.yml --limit QA # only the host present under the QA 
+   45  ansible-playbook facts.yml --limit QAP
+   46  ansible-playbook facts.yml --limit DEVP
+   48  ansible-playbook facts.yml --limit 34.56.78.2
+   54  ansible-playbook facts.yml --limit 34.208.243.106
+   62  ansible-playbook facts.yml --limit 34.208.243.106 # only the host 34.208.243.106
+##############################################################
+
+retry flag is set to get the list of hosts failed during ansible-playbook execution. 
++++++++++++++++++++++++++++++++++++++++++++++++
+
+
